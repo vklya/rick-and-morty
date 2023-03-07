@@ -2,7 +2,7 @@ export default function CharacterCard({character}) {
     const { image, name, gender, status, species, origin, type } = character;
     return (
       <>
-        <img src={image} title={name} />
+        <img src={image} alt={name} />
         <h1>{name}</h1>
         <h2>Informations</h2>
         <ul>

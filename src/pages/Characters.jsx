@@ -7,8 +7,8 @@ import Filter from 'components/Filter';
 
 export default function Characters () {
     const [items, setItems] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
+    // const [loading, setLoading] = useState(false);
+    // const [error, setError] = useState('');
 
     const location = useLocation();
     const [searchParams, setSearchParams] = useSearchParams();
@@ -17,7 +17,7 @@ export default function Characters () {
     useEffect(() => {
         const fetchCharacters = async () => {
             try {
-                setLoading(true);
+                // setLoading(true);
                 const { results } = await getCharacters();
                 function sortArray(a, b) {
                     return a.name.localeCompare(b.name);
@@ -26,10 +26,11 @@ export default function Characters () {
                 setItems(sortedResults);
             }
             catch (error) {
-                setError(error.message);
+                // setError(error.message);
+                console.log(error);
             }
             finally {
-                setLoading(false);
+                // setLoading(false);
             }
         }
         fetchCharacters();

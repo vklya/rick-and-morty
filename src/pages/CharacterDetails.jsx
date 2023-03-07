@@ -6,7 +6,7 @@ import BackLink from 'components/BackLink';
 
 export default function CharacterDetails() {
     const [character, setCharacter] = useState([]);
-    const [error, setError] = useState('');
+    // const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
     const { id } = useParams();
@@ -22,7 +22,8 @@ export default function CharacterDetails() {
                 setCharacter(data);
             }
             catch (error) {
-                setError(error.message);
+                // setError(error.message);
+                console.log(error);
             }
             finally {
                 setLoading(false);
