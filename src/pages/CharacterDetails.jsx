@@ -3,10 +3,13 @@ import { useParams, useLocation } from 'react-router-dom';
 import { getCharacterDetails } from 'services/api';
 import CharacterCard from 'components/CharacterCard';
 import BackLink from 'components/BackLink';
+import Container from 'components/Container';
+import Error from 'components/Error';
+import Loader from 'components/Loader';
 
 export default function CharacterDetails() {
     const [character, setCharacter] = useState([]);
-    // const [error, setError] = useState('');
+    const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
     const { id } = useParams();
@@ -22,7 +25,7 @@ export default function CharacterDetails() {
                 setCharacter(data);
             }
             catch (error) {
-                // setError(error.message);
+                setError(error.message);
                 console.log(error);
             }
             finally {
@@ -34,9 +37,12 @@ export default function CharacterDetails() {
 
     return (
         <main>
+            <Container>
             <BackLink to={prevPage} />
-            {loading && <p>loading...</p>}
-            {character && <CharacterCard character={character}/>}
+            {loading && <Loader/>}
+            {character && <CharacterCard character={character} />}
+            {error && <Error text={error} />}
+            </Container>
         </main>
-    )
+    );
 }

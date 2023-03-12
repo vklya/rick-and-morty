@@ -1,32 +1,34 @@
-export default function CharacterCard({character}) {
-    const { image, name, gender, status, species, origin, type } = character;
-    return (
-      <>
-        <img src={image} alt={name} />
-        <h1>{name}</h1>
-        <h2>Informations</h2>
-        <ul>
-          <li>
-            <h3>Gender</h3>
-            <p>{gender}</p>
-          </li>
-          <li>
-            <h3>Status</h3>
-            <p>{status}</p>
-          </li>
-          <li>
-            <h3>Specie</h3>
-            <p>{species}</p>
-          </li>
-          <li>
-            <h3>Origin</h3>
-            <p>{origin && origin.name}</p>
-          </li>
-          <li>
-            <h3>Type</h3>
-            <p>{type ? type : 'Unknown'}</p>
-          </li>
-        </ul>
-      </>
-    );
+import css from './card.module.scss';
+
+export default function CharacterCard({ character }) {
+  const { image, name, gender, status, species, origin, type } = character;
+  return (
+    <div className={css.card}>
+      <img src={image} alt={name} className={css.card__image} />
+      <h1 className={css.card__name}>{name}</h1>
+      <h2 className={css.card__title}>Informations</h2>
+      <ul className={css.info}>
+        <li className={css.info__item}>
+          <h3 className={css.info__title}>Gender</h3>
+          <p className={css.info__descr}>{gender}</p>
+        </li>
+        <li className={css.info__item}>
+          <h3 className={css.info__title}>Status</h3>
+          <p className={css.info__descr}>{status}</p>
+        </li>
+        <li className={css.info__item}>
+          <h3 className={css.info__title}>Specie</h3>
+          <p className={css.info__descr}>{species}</p>
+        </li>
+        <li className={css.info__item}>
+          <h3 className={css.info__title}>Origin</h3>
+          <p className={css.info__descr}>{origin && origin.name}</p>
+        </li>
+        <li className={css.info__item}>
+          <h3 className={css.info__title}>Type</h3>
+          <p className={css.info__descr}>{type ? type : 'Unknown'}</p>
+        </li>
+      </ul>
+    </div>
+  );
 }
