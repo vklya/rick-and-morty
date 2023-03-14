@@ -36,13 +36,13 @@ export default function CharacterDetails() {
     }, [id, setCharacter]);
 
     return (
-        <main>
-            <Container>
-            <BackLink to={prevPage} />
-            {loading && <Loader/>}
-            {character && <CharacterCard character={character} />}
-            {error && <Error text={error} />}
-            </Container>
-        </main>
+      <main>
+        <Container>
+          <BackLink to={prevPage} />
+          {(loading && <Loader />) ||
+            (character && <CharacterCard character={character} />) ||
+            (error && <Error text={error} />)}
+        </Container>
+      </main>
     );
 }

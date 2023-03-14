@@ -1,11 +1,14 @@
-.back{
-}
-
 .back__content{
-    margin-top: 23px;
+    position: absolute;
+    top: 23px;
     display: flex;
     align-items: center;
     gap: 8px;
+
+    @media screen and (min-width: 768px) {
+        top: 21px;
+        left: 50px;
+    }
 }
 
 .back__icon {
