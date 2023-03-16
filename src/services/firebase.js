@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider,  } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: 'AIzaSyBl-6N9uCnkudXtBd55Qv04yAt7yA5Aky8',
+    apiKey: process.env.REACT_APP_AUTH_KEY,
     authDomain: "rick-and-morty-2c323.firebaseapp.com",
     projectId: "rick-and-morty-2c323",
     storageBucket: "rick-and-morty-2c323.appspot.com",
