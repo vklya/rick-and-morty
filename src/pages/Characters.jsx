@@ -8,6 +8,7 @@ import Error from 'components/Error';
 import Loader from 'components/Loader';
 import Hero from 'components/Hero';
 import Container from 'components/Container';
+import Login from 'components/Login';
 
 const HiddenHeading = styled.h1`
     position: absolute;
@@ -64,7 +65,7 @@ export default function Characters () {
 
     return (
         <>
-            <header>{/* <Login/> */}</header>
+            <header><Login/></header>
             <main>
                 <Container>
                     <HiddenHeading>Rick and Morty</HiddenHeading>
