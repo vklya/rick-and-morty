@@ -16,22 +16,21 @@ const Login = () => {
         localStorage.setItem(LS_KEY, JSON.stringify(user));
     }, [user]);
 
-    const signIn = () => {
-        signInWithPopup(auth, provider)
-            .then(res => {
-                console.log(res);
-                const newUser = {
-                  name: res._tokenResponse.firstName,
-                  token: res._tokenResponse.oauthAccessToken,
-                };
-                setUser(newUser);
-            })
-            .catch(e => alert(e));
+    const logIn = () => {
+      signInWithPopup(auth, provider)
+        .then(res => {
+          const newUser = {
+            name: res._tokenResponse.firstName,
+            token: res._tokenResponse.oauthAccessToken,
+          };
+          setUser(newUser);
+        })
+        .catch(e => alert(e));
     };
 
-    const signUp = () => {
-        setUser('');
-    }
+    const logOut = () => {
+      setUser('');
+    };
     
     return (
       <div className={css.user}>
@@ -40,13 +39,13 @@ const Login = () => {
             <p className={css.user__name}>
               Hello, {user.name} <span>👋</span>
             </p>
-            <button className={css.user__signUp} onClick={signUp}>
-              Sign up
+            <button className={css.user__logOut} onClick={logOut}>
+              Log out
             </button>
           </div>
         ) : (
-          <button className={css.user__signIn} onClick={signIn}>
-            Sign in{' '}
+          <button className={css.user__logIn} onClick={logIn}>
+            Log in{' '}
             <img
               src={google}
               alt="Google logo"
