@@ -1,4 +1,4 @@
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, signOut } from 'firebase/auth';
 import { auth, provider } from "services/firebase";
 import { useEffect, useState } from "react";
 import google from '../../images/google.webp'
@@ -17,44 +17,43 @@ const Login = () => {
     }, [user]);
 
     const logIn = () => {
-      signInWithPopup(auth, provider)
-        .then(res => {
-          const newUser = {
-            name: res._tokenResponse.firstName,
-            token: res._tokenResponse.oauthAccessToken,
-          };
-          setUser(newUser);
-        })
-        .catch(e => alert(e));
+            signInWithPopup(auth, provider).then(res => {
+                const newUser = {
+                name: res._tokenResponse.displayName,
+                token: res._tokenResponse.refreshToken,
+                };
+                setUser(newUser);
+            });
     };
 
+
     const logOut = () => {
-      setUser('');
-    };
-    
+            signOut(auth)
+                .then(() => {
+                    setUser('');
+                })
+                .catch(e => alert(e));
+        };
+
     return (
-      <div className={css.user}>
-        {user.token ? (
-          <div>
+        <div className={css.user}>
+        {user ? (
+            <div>
             <p className={css.user__name}>
-              Hello, {user.name} <span>👋</span>
+                Hello, {user.name} <span>👋</span>
             </p>
             <button className={css.user__logOut} onClick={logOut}>
-              Log out
+                Log out
             </button>
-          </div>
+            </div>
         ) : (
-          <button className={css.user__logIn} onClick={logIn}>
+            <button className={css.user__logIn} onClick={logIn}>
             Log in{' '}
-            <img
-              src={google}
-              alt="Google logo"
-              className={css.user__logo}
-            ></img>
-          </button>
+            <img src={google} alt="Google logo" className={css.user__logo}></img>
+            </button>
         )}
-      </div>
+        </div>
     );
-}
+    }
 
 export default Login;
