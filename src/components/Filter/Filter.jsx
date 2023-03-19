@@ -1,5 +1,6 @@
 import sprite from '../../images/sprite.svg';
 import css from './filter.module.scss';
+import PropTypes from 'prop-types';
 
 const Filter = ({ value, onChange }) => (
   <div className={css.filter}>
@@ -17,3 +18,8 @@ const Filter = ({ value, onChange }) => (
 );
 
 export default Filter;
+
+Filter.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+};

@@ -1,4 +1,5 @@
 import css from './card.module.scss';
+import PropTypes from 'prop-types';
 
 export default function CharacterCard({ character }) {
   const { image, name, gender, status, species, origin, type } = character;
@@ -32,3 +33,13 @@ export default function CharacterCard({ character }) {
     </div>
   );
 }
+
+CharacterCard.propTypes = {
+  character: PropTypes.object,
+  image: PropTypes.string,
+  name: PropTypes.string,
+  gender: PropTypes.string,
+  status: PropTypes.string,
+  origin: PropTypes.arrayOf(PropTypes.object),
+  type: PropTypes.string,
+};
